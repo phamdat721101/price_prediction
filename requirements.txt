@@ -14,3 +14,5 @@ joblib==1.2.0
 pandas==2.0.1
 plotly==5.14.1
 yfinance==0.2.18
+scikit-learn
+tensorflow

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pydantic import BaseModel
 import json
 
@@ -36,9 +36,10 @@ def get_prediction(payload: StockIn):
     prediction_list = prediction_list.tolist()
 
     result = datetime.today()
+    tz = timezone(timedelta(hours=7))
     for i in range(len(prediction_list)):
         result += timedelta(minutes=1)
-        response_object = {"timestamp": result, "price": prediction_list[i][0]}
+        response_object = {"timestamp": result.astimezone(tz), "price": prediction_list[i][0]}
         resp.append(response_object)
 
     # if not prediction_list:

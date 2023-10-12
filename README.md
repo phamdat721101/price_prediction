@@ -1,11 +1,5 @@
 # Deploying and Hosting a Machine Learning Model with FastAPI and Heroku
 
-## Want to learn how to build this?
-
-Check out the [tutorial](https://testdriven.io/blog/fastapi-machine-learning).
-
-## Want to use this project?
-
 ### With Docker
 
 1. Build and tag the Docker image:

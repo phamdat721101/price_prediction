@@ -2,10 +2,11 @@ from fastapi import FastAPI, HTTPException
 from datetime import datetime, timedelta, timezone
 from pydantic import BaseModel
 import json
+from flask import Flask, jsonify, request
 
 from model import convert, predict
 
-app = FastAPI()
+app = Flask(__name__)
 
 
 # pydantic models
@@ -22,12 +23,12 @@ class StockOut(StockIn):
 # routes
 
 
-@app.get("/ping")
+@app.route("/ping", methods=['GET'])
 async def pong():
-    return {"ping": "pong!"}
+    return jsonify({"ping": "pong!"})
 
 
-@app.post("/predict", status_code=200)
+@app.route("/predict", methods=['POST'])
 def get_prediction(payload: StockIn):
     ticker = payload.ticker
 
@@ -47,3 +48,6 @@ def get_prediction(payload: StockIn):
 
     # response_object = {"ticker": ticker, "forecast": convert(prediction_list)}
     return resp
+
+if __name__ == '__main__':
+   app.run(port=5000)

@@ -5,7 +5,6 @@ WORKDIR /app
 RUN apt-get -y update  && apt-get install -y \
   python3-dev \
   apt-utils \
-  python-dev \
   build-essential \
 && rm -rf /var/lib/apt/lists/*
 

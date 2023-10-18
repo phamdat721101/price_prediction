@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from datetime import datetime, timedelta, timezone
+import time
 # from pydantic import BaseModel
 import json
 # from flask import Flask, jsonify, request
@@ -32,6 +33,11 @@ async def signal():
 
     resp = []
     for i in range(len(price)):
+        date_format = '%Y-%m-%d %H:%M:%S.%f%z'
+        date_obj = datetime.strptime(timestamp[i], date_format)
+        tuple = date_obj.timetuple()
+        time_data = time.mktime(tuple)
+        timestamp[i] = round(time_data)
         response_object = {"timestamp": timestamp[i], "price": price[i]}
         resp.append(response_object)
 
@@ -51,7 +57,7 @@ def get_prediction():
     prediction_list = prediction_list.tolist()
 
     result = datetime.today()
-    tz = timezone(timedelta(hours=7))
+    tz = timezone(timedelta(hours=0))
     for i in range(len(prediction_list)):
         result += timedelta(minutes=1)
         response_object = {"timestamp": result.astimezone(tz), "price": prediction_list[i][0]}

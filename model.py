@@ -89,7 +89,7 @@ def predict(ticker="MSFT", days=7):
 
     #train to fit model 
     trainX, trainY =new_dataset(datatrain, 1)
-    model.fit(trainX, trainY, batch_size = 3, epochs = 6)
+    model.fit(trainX, trainY, batch_size = 3, epochs = 3)
 
     test_data = pd.read_csv('eur_usd_test.csv', usecols=[4])
     # test_data = test_data.reindex(index = test_data.index[::-1])

@@ -6,7 +6,7 @@ import time
 import json
 # from flask import Flask, jsonify, request
 
-# from model import convert, predict
+from model import convert, predict
 import pandas as pd
 import numpy as np
 

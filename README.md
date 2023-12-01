@@ -5,13 +5,13 @@
 1. Build and tag the Docker image:
 
     ```sh
-    $ docker build -t fastapi-prophet .
+    $ docker build -t fxce-prediction .
     ```
 
 1. Spin up the container:
 
     ```sh
-    $ docker run --name fastapi-ml -e PORT=8008 -p 8008:8008 -d fastapi-prophet:latest
+    $ docker run --name fxce-ml -e PORT=8008 -p 8008:8008 -d fxce-prediction:latest
     ```
 
 1. Train the model:

@@ -59,9 +59,8 @@ def train(model):
     return model
 
 def predict(ticker="MSFT", days=7):
-    dataset = pd.read_csv('eur_usd.csv', usecols=[4])
-    # dataset = dataset.reindex(index = dataset.index[::-1])
-    datatrain = dataset
+    dataset = pd.read_csv('EURUSD_M5.csv', encoding='utf-8')
+    dataset = dataset['<CLOSE>']
     datatrain = np.reshape(datatrain.values, (len(datatrain), 1))
     scaler = MinMaxScaler(feature_range=(0,1))
     datatrain = scaler.fit_transform(datatrain)

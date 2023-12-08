@@ -8,7 +8,7 @@ import csv
 
 def fetch_price():
     headers = {'X-API-VERSION': 'v1'}
-    response_API = requests.get('https://fpticker-api.stg.vncdevs.com/api/candles?symbol=EURUSD&timeframe=M5&from_time=1701997255&to_time=1702004455', headers=headers)
+    response_API = requests.get('https://fpticker-api.stg.vncdevs.com/api/candles?symbol=EURUSD&timeframe=M5&from_time=1701997255&to_time=1702005501', headers=headers)
     print(response_API.status_code)
     data = response_API.text
     parse_json = json.loads(data)
